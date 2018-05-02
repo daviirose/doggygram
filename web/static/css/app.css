@@ -1,1 +1,8 @@
 /* This file is for your main application css. */
+.newuser {
+  font-family: cursive;
+}
+.lead {
+  font-family: cursive;
+  line-height: 1.4;
+}

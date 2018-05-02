@@ -1,5 +1,5 @@
 <div class="jumbotron">
-<h2>Doggygram</h2>
+<h2 class="Doggygram-title-style">Doggygram</h2>
 <p class="lead">Instagram for dogs!</p>
 </div>
 

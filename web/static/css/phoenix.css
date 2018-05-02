@@ -27,14 +27,21 @@ form.link, form.button {
   border-bottom: 1px solid #e5e5e5;
 }
 .logo {
-  width: 519px;
-  height: 71px;
+  width:610px;
+  height: 200px;
   display: inline-block;
   margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
-  background-size: 519px 71px;
+  margin-left: 8%;
+  background-image: url("/images/dogs.png");
+  background-size: 600px;
 }
-
+/* Login style */
+.login-style {
+  font-family: cursive;
+}
+.html {
+  background-color: black;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing {
@@ -54,10 +61,20 @@ form.link, form.button {
 
 /* Main marketing message */
 .jumbotron {
+  background-image: url("/images/dots.png");
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
+.Doggygram-title-style {
+  font-family: cursive;
+  color: grey;
+  font-size: 80px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.body {
 
+}
 /* Supporting marketing content */
 .marketing {
   margin: 35px 0;

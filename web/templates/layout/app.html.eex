@@ -7,11 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Phoenix!</title>
+    <title>Doggygram!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
+  <body class="body">
     <div class="container" role="main">
       <div class="header">
         <ol class="breadcrumb text-right">
