@@ -4,13 +4,13 @@ defmodule Doggygram.Mixfile do
   def project do
     [app: :doggygram,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases(),
-     deps: deps()]
+     aliases: aliases,
+     deps: deps]
   end
 
   # Configuration for the OTP application.
@@ -18,8 +18,8 @@ defmodule Doggygram.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Doggygram, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
+                    :phoenix_ecto, :postgrex, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,10 +37,11 @@ defmodule Doggygram.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:comeonin, "~> 2.0"}]
   end
 
-  # Aliases are shortcuts or tasks specific to the current project.
+  # Aliases are shortcut or tasks specific to the current project.
   # For example, to create, migrate and run the seeds file at once:
   #
   #     $ mix ecto.setup
@@ -48,7 +49,6 @@ defmodule Doggygram.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     "ecto.reset": ["ecto.drop", "ecto.setup"]]
   end
 end
