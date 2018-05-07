@@ -15,6 +15,7 @@
     <div class="container" role="main">
       <div class="header">
         <ol class="breadcrumb text-right">
+          <p class="Doggygram-title">Doggygram!</p>
           <%= if @current_user do %>
             <li><%= @current_user.username %></li>
             <li>
