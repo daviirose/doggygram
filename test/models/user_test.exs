@@ -1,31 +1,33 @@
 defmodule Doggygram.UserTest do
-  use Doggygram.ModelCase
+  use Doggygram.ModelCase, async: true
+
   alias Doggygram.User
 
-  @valid_attrs %{name: "A User", username: "eva"}
+  @valid_attrs %{name: "A User", username: "eva", password: "secret"}
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
+  test "changset with valid attributes" do
     changeset = User.changeset(%User{}, @valid_attrs)
     assert changeset.valid?
   end
 
-  test "changeset with invalid attributes" do
+  test "changset with invalid attributes" do
     changeset = User.changeset(%User{}, @invalid_attrs)
     refute changeset.valid?
   end
 
-  test "changeset does not accept long usernames" do
+  test "changset does not accept long usernames" do
     attrs = Map.put(@valid_attrs, :username, String.duplicate("a", 30))
-    assert {:username, {"should be at most %{count} character(s)", [count: 20]}} in
+    assert {:username, "should be at most 20 character(s)"} in
            errors_on(%User{}, attrs)
   end
 
   test "registration_changeset password must be at least 6 chars long" do
     attrs = Map.put(@valid_attrs, :password, "12345")
     changeset = User.registration_changeset(%User{}, attrs)
-    assert {:password, {"should be at least %{count} character(s)", count: 6}}
-           in changeset.errors
+    {message, keywords} = changeset.errors[:password]
+    assert message == "should be at least %{count} character(s)"
+    assert {:count, 6} in keywords
   end
 
   test "registration_changeset with valid attributes hashes password" do
@@ -37,4 +39,4 @@ defmodule Doggygram.UserTest do
     assert pass_hash
     assert Comeonin.Bcrypt.checkpw(pass, pass_hash)
   end
-end 
+end

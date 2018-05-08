@@ -11,16 +11,20 @@ defmodule Doggygram.AuthTest do
     {:ok, %{conn: conn}}
   end
 
-  test "authenticate_user halts when no current_user exists", %{conn: conn} do
+  test "authenticate_user halts when no current_user exists",
+    %{conn: conn} do
+
     conn = Auth.authenticate_user(conn, [])
     assert conn.halted
   end
 
-  test "authenticate_user continues when the current_user exists", %{conn: conn} do
-    conn =
-      conn
-      |> assign(:current_user, %Doggygram.User{})
-      |> Auth.authenticate_user([])
+  test "authenticate_user continues when the current_user exists",
+    %{conn: conn} do
+
+      conn =
+        conn
+        |> assign(:current_user, %Doggygram.User{})
+        |> Auth.authenticate_user([])
 
     refute conn.halted
   end
@@ -75,7 +79,7 @@ defmodule Doggygram.AuthTest do
   end
 
   test "login with password mismatch", %{conn: conn} do
-    _ = insert_user(username: "me", password: "secret")
+    insert_user(username: "me", password: "secret")
     assert {:error, :unauthorized, _conn} =
       Auth.login_by_username_and_pass(conn, "me", "wrong", repo: Repo)
   end

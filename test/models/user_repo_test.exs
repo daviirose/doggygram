@@ -2,7 +2,7 @@ defmodule Doggygram.UserRepoTest do
   use Doggygram.ModelCase
   alias Doggygram.User
 
-  @valid_attrs %{name: "A User", username: "eva"}
+  @valid_attrs %{name: "A User", username: "eva", password: "secret"}
 
   test "converts unique_constraint on username to error" do
     insert_user(username: "eric")
@@ -10,6 +10,7 @@ defmodule Doggygram.UserRepoTest do
     changeset = User.changeset(%User{}, attrs)
 
     assert {:error, changeset} = Repo.insert(changeset)
-    assert {:username, "has already been taken"} in changeset.errors
+    {message, _} = changeset.errors[:username]
+    assert message == "has already been taken"
   end
 end
