@@ -39,15 +39,15 @@ defmodule Doggygram.ModelCase do
   ## Examples
   Given a User schema that lists `:name` as a required field and validates
   `:password` to be safe, it would return:
-      iex> errors_on(%User{}, %{password: "password"})
-      [password: "is unsafe", name: "is blank"]
+  iex> errors_on(%User{}, %{password: "password"})
+  [password: "is unsafe", name: "is blank"]
   You could then write your assertion like:
-      assert {:password, "is unsafe"} in errors_on(%User{}, %{password: "password"})
+  assert {:password, "is unsafe"} in errors_on(%User{}, %{password: "password"})
   You can also create the changeset manually and retrieve the errors
   field directly:
-      iex> changeset = User.changeset(%User{}, password: "password")
-      iex> {:password, "is unsafe"} in changeset.errors
-      true
+  iex> changeset = User.changeset(%User{}, password: "password")
+  iex> {:password, "is unsafe"} in changeset.errors
+  true
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
