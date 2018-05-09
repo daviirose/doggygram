@@ -24,4 +24,4 @@ defmodule Doggygram.SessionController do
         |> Doggygram.Auth.logout()
         |> redirect(to: page_path(conn, :index))
       end
-    end
+  end

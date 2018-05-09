@@ -47,7 +47,7 @@ defmodule Doggygram.VideoController do
             video = Repo.get!(user_videos(user), id)
             render(conn, "show.html", video: video)
           end
-
+          
           def edit(conn, %{"id" => id}, user) do
             video = Repo.get!(user_videos(user), id)
             changeset = Video.changeset(video)
